@@ -16,11 +16,6 @@ import Footer from "./Components/Footer/Footer";
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap",
   },
@@ -59,34 +54,41 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
+  const is404 = isRouteErrorResponse(error) && error.status === 404;
 
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
+  const title = is404 ? "404 - Page Not Found" : "Something Went Wrong";
+  const message = is404
+    ? "The page you’re looking for doesn’t exist."
+    : error instanceof Error
+    ? error.message
+    : "An unexpected error occurred.";
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-      <Link to="/" className="text-blue-700 hover:underline dark:text-blue-500 p-4">
-        Go back home
+    <main className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-gray-900 via-gray-800 to-black text-white p-6">
+
+      {/* Big Number */}
+      <h1 className="text-9xl font-extrabold drop-shadow-xl text-purple-500">
+        {is404 ? "404" : "Error"}
+      </h1>
+
+      {/* Title */}
+      <h2 className="text-3xl font-bold mt-4 mb-2">{title}</h2>
+
+      {/* Description */}
+      <p className="text-gray-300 text-center max-w-lg mb-8">
+        {message}
+      </p>
+
+      {/* Home Button */}
+      <Link
+        to="/"
+        className="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 transition text-lg font-semibold shadow-lg"
+      >
+        Go Back Home
       </Link>
+
+      {/* Decorative Glow */}
+      <div className="w-60 h-60 bg-purple-500 blur-3xl opacity-20 absolute -z-10"></div>
     </main>
   );
 }
-

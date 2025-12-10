@@ -7,26 +7,27 @@ import type { MenuItem } from "./menuConfig";
 import { menuConfig } from "./menuConfig";
 import NavItem from "./NavItem";
 import Dropdown from "./Dropdown";
+import "../../utils/color.css";
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 bg-gray-200 shadow-md z-50">
+    <nav className="sticky top-0 bgColor shadow-md z-50 text-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="h-16 flex items-center justify-between">
 
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <img src="/images/icon.png" className="h-12 w-12" alt="Logo" />
+            <img src="/images/madrasa-icon.jpg" className="h-12 w-12 rounded-full" alt="Logo" />
             <Link to="/" className="text-xl font-bold">
               Abul Ulaia Sunnia Madrasa
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <ul className="hidden lg:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-4">
             {menuConfig.map((item: MenuItem, index: number) =>
               item.submenu ? (
                 <Dropdown
@@ -51,7 +52,7 @@ const Navbar = () => {
               Login
             </Link>
             <button
-              className="lg:hidden text-green-600 text-2xl"
+              className="lg:hidden text-green-400 text-2xl"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? <FaTimes /> : <FaBars />}
@@ -66,7 +67,7 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="lg:hidden bg-white rounded shadow-md p-4 mt-2"
+              className="lg:hidden bg-blue-600 rounded shadow-md p-4 mt-2"
             >
               <ul className="flex flex-col gap-4">
                 {menuConfig.map((item: MenuItem, index: number) =>
