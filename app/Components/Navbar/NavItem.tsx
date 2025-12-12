@@ -20,7 +20,7 @@ const NavItem = ({ label, path, onClick }: NavItemProps) => {
         onClick={onClick}
         className={({ isActive }) =>
           isActive
-            ? "buttonBgColor text-white px-3 py-1 rounded font-semibold"
+            ? "activeTextColor px-3 py-1 rounded font-semibold"
             : "px-3 py-1 font-semibold hoverTextColor transition"
         }
       >
