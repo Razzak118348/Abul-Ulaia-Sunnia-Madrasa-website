@@ -40,17 +40,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <div className="ml-auto mr-auto p-auto">
+  return<>
+  <div className="max-w-full">
     <Navbar></Navbar>
-<main className="ml-auto mr-auto  min-w-auto max-w-7xl">
-  <Outlet />
-</main>
-<div>
-  <Footer></Footer>
-</div>
-
+    <main className="ml-auto mr-auto  min-w-auto max-w-7xl">
+      <Outlet />
+    </main>
+    <div>
+      <Footer></Footer>
     </div>
-  ;
+
+  </div>
+  </>
+    ;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -60,8 +62,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const message = is404
     ? "The page you’re looking for doesn’t exist."
     : error instanceof Error
-    ? error.message
-    : "An unexpected error occurred.";
+      ? error.message
+      : "An unexpected error occurred.";
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-gray-900 via-gray-800 to-black text-white p-6">

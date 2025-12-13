@@ -53,7 +53,7 @@ export const menuConfig: MenuItem[] = [
   },
 
   { label: "Admission", path: "/admission" },
-
+{label: "Notice", path: "/notice" },
   { label: "Contact", path: "/contact" },
 
 ];

@@ -55,6 +55,8 @@ route("updates/gallery","pages/Updates/Gallery/gallery.tsx"),
 
   // Admission
   route("admission", "pages/Admission/admission.tsx"),
+  // Notice
+  route("notice", "pages/Notice/notice.tsx"),
 
   // Contact
   route("contact", "pages/Contact/contact.tsx"),
