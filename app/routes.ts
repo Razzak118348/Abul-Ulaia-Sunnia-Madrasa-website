@@ -32,10 +32,6 @@ route(
   "pages/Administration/MessagePrincipal/messagePrincipal.tsx"
 ),
 
-// route(
-//   "administration/aliahTeachers",
-//   "pages/Administration/AliahTeachers/aliahTeachers.tsx"
-// ),
 route("administration/aliahTeachers","pages/Administration/AliahTeachers/aliahTeachers.tsx"),
 
 route(
@@ -52,5 +48,15 @@ route(
   "administration/staffMembers",
   "pages/Administration/StaffMembers/staffMembers.tsx"
 ),
+
+//updates
+route("updates/newsAndEvents","pages/Updates/NewsAndEvent/newsAndEvents.tsx"),
+route("updates/gallery","pages/Updates/Gallery/gallery.tsx"),
+
+  // Admission
+  route("admission", "pages/Admission/admission.tsx"),
+
+  // Contact
+  route("contact", "pages/Contact/contact.tsx"),
 
 ] satisfies RouteConfig;

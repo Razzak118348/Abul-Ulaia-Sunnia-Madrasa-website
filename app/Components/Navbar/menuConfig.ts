@@ -47,8 +47,8 @@ export const menuConfig: MenuItem[] = [
   {
     label: "Updates",
     submenu: [
-      { label: "News & Events", path: "/media/news-events" },
-      { label: "Gallery", path: "/media/gallery" },
+      { label: "News & Events", path: "/updates/newsAndEvents" },
+      { label: "Gallery", path: "/updates/gallery" },
     ],
   },
 
